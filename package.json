@@ -10,7 +10,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "crypto": "^1.0.1"
-  }
+  "dependencies": {}
 }
