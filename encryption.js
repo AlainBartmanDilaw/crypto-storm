@@ -3,16 +3,30 @@
 const crypto = require('crypto');
 
 const IV_LENGTH = 16; // For AES, this is always 16
+const ERROR_MESSAGE = "The encryption key must be defined with 32 characters length string. Set first environment variable ENCRYPTION_KEY.";
 
-// Notre clé de chiffrement, elle est souvent générée aléatoirement mais elle doit être la même pour le décryptage
-// A passer en variable environnement
-const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY;
+function getEncryptionKey() {
+    if (process.env.ENCRYPTION_KEY.length !== 32) {
+        throw ERROR_MESSAGE;
+    }
+    return process.env.ENCRYPTION_KEY.trimRight();
+}
 
-// On définit notre algorithme de cryptage
+// Our encryption key.
+// It's often generated randomly but it must be the same for decryption
+// Set first environment variable ENCRYPTION_KEY
+const ENCRYPTION_KEY = getEncryptionKey();
+
+//Encryption algorithm
 const algorithm = 'aes-256-cbc';
 
-function encrypt(text) {
-    let iv = crypto.randomBytes(IV_LENGTH);
+function doEncrypt(text) {
+
+    if (ENCRYPTION_KEY === undefined) {
+        throw ERROR_MESSAGE;
+    }
+
+    let iv = crypto.randomBytes(IV_LENGTH).slice(0, 16);
     let cipher = crypto.createCipheriv(algorithm, Buffer.from(ENCRYPTION_KEY), iv);
     let encrypted = cipher.update(text);
 
@@ -21,7 +35,11 @@ function encrypt(text) {
     return iv.toString('hex') + ':' + encrypted.toString('hex');
 }
 
-function decrypt(text) {
+function doDecrypt(text) {
+    if (ENCRYPTION_KEY === undefined) {
+        throw ERROR_MESSAGE;
+    }
+
     let textParts = text.split(':');
     let iv = Buffer.from(textParts.shift(), 'hex');
     let encryptedText = Buffer.from(textParts.join(':'), 'hex');
@@ -33,4 +51,4 @@ function decrypt(text) {
     return decrypted.toString();
 }
 
-module.exports = { decrypt, encrypt };
+module.exports = {doDecrypt, doEncrypt};

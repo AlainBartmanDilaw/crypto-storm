@@ -1,14 +1,14 @@
 {
   "name": "crypto-storm",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.5",
+  "description": "JavaScript library of crypto specific functions.",
   "main": "encryption.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js "
   },
   "keywords": [],
-  "author": "",
+  "author": "BartmanDilaw",
   "license": "ISC",
   "dependencies": {}
 }
