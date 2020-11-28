@@ -5,7 +5,7 @@ This must imperatively be valued in the environment variable ENCRYPTION_KEY
 
 #Example syntax
 
-ENCRYPTION_KEY='hCGTd)qSb@ZfAtvPfy^w3$#gN/KCsN.w' node index.js "String to encrypt"
+ENCRYPTION_KEY='hCGTd)qSb@ZfAtvPfy^w3$#gN/KCsN.w' node encrypt.js "String to encrypt"
 
 should return something like this :
 
