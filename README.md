@@ -17,3 +17,6 @@ The encryption key must have exactly 32 characters
 
 ## Return values 
 Each launch will provide a different return value
+
+# Sources
+https://github.com/AlainBartmanDilaw/crypto-storm
