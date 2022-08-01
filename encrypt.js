@@ -15,12 +15,12 @@ ${node} ${app} "string to encrypt"`;
     if (myArgs.length !== 1) {
 
         throw `A string to encrypt must be add as parameter\n${syntaxe}`;
-        
+
     }
 
     const encrypted = _encryption.doEncrypt(myArgs[0]);
     const decrypted = _encryption.doDecrypt(encrypted);
-    console.log(`${decrypted} has been encrypted to ${encrypted}`);
+    console.log(`${decrypted} has been encrypted to [${encrypted}]`);
 
 } catch (e) {
     console.error(e);
