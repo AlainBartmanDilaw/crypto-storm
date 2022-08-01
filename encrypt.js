@@ -13,9 +13,7 @@ ${node} ${app} "string to encrypt"`;
 
     myArgs = myArgs.slice(2); // Suppressing the 2 first command line arguments (node + program-name)
     if (myArgs.length !== 1) {
-
         throw `A string to encrypt must be add as parameter\n${syntaxe}`;
-        
     }
 
     const encrypted = _encryption.doEncrypt(myArgs[0]);
