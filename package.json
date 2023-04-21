@@ -5,10 +5,14 @@
   "main": "encryption.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js "
+    "start": "node index.js ",
+    "extract0": "cross-env ENCRYPTION_KEY='+GKTkd5yY/xvaGR]wS[JC4@1+Epd)6@v' node index.js 4X38sKgro64-+qGu",
+    "extract": "node encryption.js u197551530_fbbtst"
   },
   "keywords": [],
   "author": "BartmanDilaw",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
 }
