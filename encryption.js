@@ -13,7 +13,7 @@ function getEncryptionKey() {
     if (process.env.ENCRYPTION_KEY.length !== 32) {
         throw ERROR_MESSAGE + " " + SETFIRST_MESSAGE;
     }
-    return process.env.ENCRYPTION_KEY.trimRight();
+    return process.env.ENCRYPTION_KEY.trimEnd();
 }
 
 // Our encryption key.
