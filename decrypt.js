@@ -8,8 +8,8 @@ try {
     const arg1 = myArgs[1];
     const app = path.dirname(arg1).replace(currentPath, '').replace(/^\\/g, '') + path.basename(arg1);
     const syntaxe = `Syntax :
-${node} ${app} "string to encrypt"`;
-console.log('arg', myArgs)
+${node} ${app} "string to decrypt"`;
+
     myArgs = myArgs.slice(2); // Suppressing the 2 first command line arguments (node + program-name)
     if (myArgs.length !== 1) {
         throw `A string to encrypt must be add as parameter\n${syntaxe}`;
@@ -17,7 +17,7 @@ console.log('arg', myArgs)
 
     const crypted = myArgs[0];
     const decrypted = _encryption.doDecrypt(crypted);
-    console.log(`${crypted} has been encrypted to ${decrypted}`);
+    console.log(`${crypted} has been decrypted to ${decrypted}`);
 
 } catch (e) {
     console.error(e);
