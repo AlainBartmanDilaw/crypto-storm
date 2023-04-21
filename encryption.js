@@ -3,11 +3,15 @@
 const crypto = require('crypto');
 
 const IV_LENGTH = 16; // For AES, this is always 16
-const ERROR_MESSAGE = "The encryption key must be defined with 32 characters length string. Set first environment variable ENCRYPTION_KEY.";
-
+const SETFIRST_MESSAGE = "Set first environment variable ENCRYPTION_KEY."
+const ERROR_MESSAGE = "The encryption key must be defined with 32 characters length string.";
+const UNDEFINED_MESSAGE = "The variable ENCRYPTION_KEY must be defined before any decrypt action."
 function getEncryptionKey() {
+    if (process.env.ENCRYPTION_KEY === undefined) {
+        throw UNDEFINED_MESSAGE + " " + SETFIRST_MESSAGE;
+    }
     if (process.env.ENCRYPTION_KEY.length !== 32) {
-        throw ERROR_MESSAGE;
+        throw ERROR_MESSAGE + " " + SETFIRST_MESSAGE;
     }
     return process.env.ENCRYPTION_KEY.trimRight();
 }
