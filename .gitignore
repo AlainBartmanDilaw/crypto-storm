@@ -97,5 +97,5 @@ Thumbs.db
 *.swp
 
 package-lock.json
-*.orig
+*.orig
 pnpm-lock.yaml
