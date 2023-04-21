@@ -1,18 +1,31 @@
 {
   "name": "crypto-storm",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "JavaScript library of crypto specific functions.",
-  "main": "encryption.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js ",
     "extract0": "cross-env ENCRYPTION_KEY='+GKTkd5yY/xvaGR]wS[JC4@1+Epd)6@v' node index.js 4X38sKgro64-+qGu",
     "extract": "node encryption.js u197551530_fbbtst"
   },
-  "keywords": [],
+  "keywords": [
+    "cryptography",
+    "AES",
+    "CBC"
+  ],
   "author": "BartmanDilaw",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^7.0.3"
+  },
+  "homepage": "https://github.com/AlainBartmanDilaw/crypto-storm",
+  "bugs": {
+    "url": "https://github.com/AlainBartmanDilaw/crypto-storm/issues",
+    "email": "alainleglise@outlook.fr"
+  },
+  "repository": {
+    "url": "https://github.com/AlainBartmanDilaw/crypto-storm",
+    "type": "git"
   }
 }
