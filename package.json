@@ -2,11 +2,11 @@
   "name": "crypto-storm",
   "version": "0.1.0",
   "description": "JavaScript library of crypto specific functions.",
-  "main": "index.js",
+  "main": "encrypt.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js ",
-    "extract": "cross-env ENCRYPTION_KEY='+GKTkd5yY/xvaGR]wS[JC4@1+Epd)6@v' node index.js 4X38sKgro64-+qGu"
+    "start": "node encrypt.js ",
+    "extract": "cross-env ENCRYPTION_KEY='+GKTkd5yY/xvaGR]wS[JC4@1+Epd)6@v' node encrypt.js 4X38sKgro64-+qGu"
   },
   "keywords": [
     "cryptography",
