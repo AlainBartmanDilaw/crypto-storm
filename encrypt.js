@@ -18,7 +18,7 @@ ${node} ${app} "string to encrypt"`;
 
     const encrypted = _encryption.doEncrypt(myArgs[0]);
     const decrypted = _encryption.doDecrypt(encrypted);
-    console.log(`${decrypted} has been encrypted to ${encrypted}`);
+    console.log(`${decrypted} has been encrypted to [${encrypted}]`);
 
 } catch (e) {
     console.error(e);
