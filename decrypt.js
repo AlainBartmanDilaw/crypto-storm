@@ -15,8 +15,9 @@ ${node} ${app} "string to decrypt"`;
         throw `A string to encrypt must be add as parameter\n${syntaxe}`;
     }
 
-    const decrypted = _encryption.doDecrypt(myArgs[0]);
-    console.log(`${myArgs[0]} has been decrypted to ${decrypted}`);
+    const crypted = myArgs[0];
+    const decrypted = _encryption.doDecrypt(crypted);
+    console.log(`${crypted} has been decrypted to ${decrypted}`);
 
 } catch (e) {
     console.error(e);
