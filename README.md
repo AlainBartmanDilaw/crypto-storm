@@ -14,8 +14,14 @@ should return something like this :
 > Something has been encrypted to 14398958d684ad2d6840b7a543e29df0:ecfcf677d6cc943bb850493ef60d99ec
 
 #  Notices
-## Key length
+## Encryption key
+### Key length
 The encryption key must have exactly 32 characters
+### Note about # character
+If your encryption key includes # character, you have to escape the character with "\"
+or surround your key with single or double quote (' or ")
+
+If not, the # character will be interpreted as start of a comment, cutting your encryption key
 
 ## Return values 
 Each launch will provide a different return value
