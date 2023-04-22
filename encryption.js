@@ -5,7 +5,9 @@ const crypto = require('crypto');
 const IV_LENGTH = 16; // For AES, this is always 16
 const SETFIRST_MESSAGE = "Set first environment variable ENCRYPTION_KEY."
 const ERROR_MESSAGE = "The encryption key must be defined with 32 characters length string.";
-const UNDEFINED_MESSAGE = "The variable ENCRYPTION_KEY must be defined before any decrypt action."
+const UNDEFINED_MESSAGE = "The variable ENCRYPTION_KEY must be defined before any decrypt action.";
+const NO_UNDEFINED_TEXT = "The text you want to crypt or decrypt cannot be undefined or empty.";
+
 function getEncryptionKey() {
     if (process.env.ENCRYPTION_KEY === undefined) {
         throw UNDEFINED_MESSAGE + " " + SETFIRST_MESSAGE;
@@ -31,7 +33,7 @@ function doEncrypt(text) {
     }
 
     if(text === undefined){
-        throw "The text you want to crypt or decrypt cannot be undefined or empty.";
+        throw NO_UNDEFINED_TEXT;
     }
 
     let iv = crypto.randomBytes(IV_LENGTH).slice(0, 16);
@@ -46,6 +48,10 @@ function doEncrypt(text) {
 function doDecrypt(text) {
     if (ENCRYPTION_KEY === undefined) {
         throw ERROR_MESSAGE;
+    }
+
+    if(text === undefined){
+        throw NO_UNDEFINED_TEXT;
     }
 
     let textParts = text.split(':');
