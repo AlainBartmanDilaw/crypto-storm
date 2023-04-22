@@ -30,6 +30,10 @@ function doEncrypt(text) {
         throw ERROR_MESSAGE;
     }
 
+    if(text === undefined){
+        throw "The text you want to crypt or decrypt cannot be undefined or empty.";
+    }
+
     let iv = crypto.randomBytes(IV_LENGTH).slice(0, 16);
     let cipher = crypto.createCipheriv(algorithm, Buffer.from(ENCRYPTION_KEY), iv);
     let encrypted = cipher.update(text);
