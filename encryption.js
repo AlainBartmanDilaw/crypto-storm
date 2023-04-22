@@ -59,4 +59,7 @@ function doDecrypt(text) {
     return decrypted.toString();
 }
 
-module.exports = {doDecrypt, doEncrypt};
+module.exports = {
+    doDecrypt: doDecrypt,
+    doEncrypt: doEncrypt
+};
