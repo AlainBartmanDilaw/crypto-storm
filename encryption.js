@@ -32,7 +32,7 @@ function doEncrypt(text) {
         throw ERROR_MESSAGE;
     }
 
-    if(text === undefined){
+    if (text === undefined || text === "") {
         throw NO_UNDEFINED_TEXT;
     }
 
@@ -50,7 +50,7 @@ function doDecrypt(text) {
         throw ERROR_MESSAGE;
     }
 
-    if(text === undefined){
+    if (text === undefined || text === "") {
         throw NO_UNDEFINED_TEXT;
     }
 
