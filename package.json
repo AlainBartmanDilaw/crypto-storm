@@ -1,6 +1,6 @@
 {
   "name": "crypto-storm",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "JavaScript library of crypto specific functions.",
   "main": "encryption.js",
   "scripts": {
