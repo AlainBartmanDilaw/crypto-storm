@@ -1,11 +1,13 @@
 {
+  "type": "module",
   "name": "crypto-storm",
   "version": "0.1.0",
   "description": "JavaScript library of crypto specific functions.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js "
+    "test-V-AES": "env-cmd node index.js \"This is a test\"",
+    "testV2": "env-cmd node encrypt.js \"This is a test\""
   },
   "keywords": [
     "cryptography",
@@ -14,7 +16,9 @@
   ],
   "author": "BartmanDilaw",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "env-cmd": "^10.1.0"
+  },
   "homepage": "https://github.com/AlainBartmanDilaw/crypto-storm",
   "bugs": {
     "url": "https://github.com/AlainBartmanDilaw/crypto-storm/issues",
