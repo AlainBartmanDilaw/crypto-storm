@@ -95,3 +95,7 @@ Thumbs.db
 
 # Linux swap files.
 *.swp
+
+package-lock.json
+*.orig
+pnpm-lock.yaml
