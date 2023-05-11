@@ -1,24 +1,16 @@
+import {_encryption} from "./encryption.js";
+import {controlArgs} from "./ControlArgs.js";
+import {ENCRYPTION_KEY} from "./Encryption_Key.js";
+
 try {
-    const _encryption = require('./encryption');
-    const fs = require('fs');
-    const path = require("path");
+    const myArgs = controlArgs();
 
-    const currentPath = process.cwd();
-    let myArgs = process.argv;
-    const node = path.basename(myArgs[0], '.exe');
-    const arg1 = myArgs[1];
-    const app = path.dirname(arg1).replace(currentPath, '').replace(/^\\/g, '') + path.basename(arg1);
-    const syntaxe = `Syntax :
-${node} ${app} "string to encrypt"`;
-
-    myArgs = myArgs.slice(2); // Suppressing the 2 first command line arguments (node + program-name)
-    if (myArgs.length !== 1) {
-        throw `A string to encrypt must be add as parameter\n${syntaxe}`;
-    }
-
-    const encrypted = _encryption.doEncrypt(myArgs[0]);
-    const decrypted = _encryption.doDecrypt(encrypted);
+    const encrypted = _encryption.doEncrypt(myArgs[0], ENCRYPTION_KEY);
+    const decrypted = _encryption.doDecrypt(encrypted, ENCRYPTION_KEY);
     console.log(`${decrypted} has been encrypted to [${encrypted}]`);
+
+    const res = _encryption.doDecrypt("18154170f8662176f2877e925e906f78:42134eb49cffa2163d53f7135b4b7d91",ENCRYPTION_KEY );
+    console.log('2', res)
 
 } catch (e) {
     console.error(e);
