@@ -1,6 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
+/build
 /dist
 /tmp
 /out-tsc
@@ -98,4 +99,3 @@ Thumbs.db
 
 package-lock.json
 *.orig
-built/
