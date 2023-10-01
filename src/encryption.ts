@@ -8,64 +8,56 @@ const ERROR_MESSAGE: string = "The encryption key must be defined with 32 charac
 const UNDEFINED_MESSAGE: string = "The variable ENCRYPTION_KEY must be defined before any decrypt action.";
 const NO_UNDEFINED_TEXT: string = "The text you want to crypt or decrypt cannot be undefined or empty.";
 
-function getEncryptionKey(): string {
+//Encryption algorithm
+const algorithm: string = 'aes-256-cbc';
+const encoding: BufferEncoding = 'hex';
+
+const hashData = {
+    data: 'crypto-storm',
+    algo: 'sha256'
+}
+
+function getEncryptionKey(): Buffer {
     if (process.env.ENCRYPTION_KEY === undefined) {
         throw UNDEFINED_MESSAGE + " " + SETFIRST_MESSAGE;
     }
     if (process.env.ENCRYPTION_KEY.length !== 32) {
         throw ERROR_MESSAGE + " " + SETFIRST_MESSAGE;
     }
-    return process.env.ENCRYPTION_KEY.trimEnd();
+    return crypto.createHash(hashData.algo).update(hashData.data).digest();
 }
 
 // Our encryption key.
 // It's often generated randomly but it must be the same for decryption
 // Set first environment variable ENCRYPTION_KEY
-const ENCRYPTION_KEY: string = getEncryptionKey();
+const key: Buffer = getEncryptionKey();
 
-//Encryption algorithm
-const algorithm: string = 'aes-256-cbc';
 
-function doEncrypt(text: string): string {
-
-    if (ENCRYPTION_KEY === undefined) {
-        throw ERROR_MESSAGE;
-    }
+export function doEncrypt(text: string): string {
 
     if (text === undefined || text === "") {
         throw NO_UNDEFINED_TEXT;
     }
 
     let iv: Buffer = crypto.randomBytes(IV_LENGTH).slice(0, 16);
-    let cipher: crypto.Cipher = crypto.createCipheriv(algorithm, Buffer.from(ENCRYPTION_KEY), iv);
+    let cipher: crypto.Cipher = crypto.createCipheriv(algorithm, key, iv);
     let encrypted: Buffer = cipher.update(text);
 
     encrypted = Buffer.concat([ encrypted, cipher.final() ]);
 
-    return iv.toString('hex') + ':' + encrypted.toString('hex');
+    return iv.toString(encoding) + ':' + encrypted.toString(encoding);
 }
 
-function doDecrypt(text: string): string {
-    if (ENCRYPTION_KEY === undefined) {
-        throw ERROR_MESSAGE;
-    }
-
+export function doDecrypt(text: string): string {
     if (text === undefined || text === "") {
         throw NO_UNDEFINED_TEXT;
     }
 
-    let textParts: string[] = text.split(':');
-    let iv: Buffer = Buffer.from(textParts.shift(), 'hex');
-    let encryptedText: Buffer = Buffer.from(textParts.join(':'), 'hex');
-    let decipher: crypto.Decipher = crypto.createDecipheriv(algorithm, Buffer.from(ENCRYPTION_KEY), iv);
-    let decrypted: Buffer = decipher.update(encryptedText);
-
-    decrypted = Buffer.concat([ decrypted, decipher.final() ]);
+    const textParts: string[] = text.split(':');
+    const iv: Buffer = Buffer.from(textParts.shift(), encoding);
+    const encryptedText: Buffer = Buffer.from(textParts.join(':'), encoding);
+    const decipher: crypto.Decipher = crypto.createDecipheriv(algorithm, key, iv);
+    const decrypted: Buffer = Buffer.concat([ decipher.update(encryptedText), decipher.final() ]);
 
     return decrypted.toString();
 }
-
-module.exports = {
-    doDecrypt: doDecrypt,
-    doEncrypt: doEncrypt
-};

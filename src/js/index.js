@@ -1,5 +1,5 @@
 import {AES} from "./AES.js";
-import {controlArgs} from "./ControlArgs.js";
+import {controlArgs} from "../ControlArgs.ts";
 import {ENCRYPTION_KEY} from "./Encryption_Key.js";
 
 try {
