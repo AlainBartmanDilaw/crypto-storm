@@ -8,7 +8,7 @@
     "start": "node encrypt.js ",
     "extract": "cross-env ENCRYPTION_KEY='+GKTkd5yY/xvaGR]wS[JC4@1+Epd)6@v' ts-node src/encrypt 4X38sKgro64-+qGu",
     "random": "node tests/random-test.js",
-    "build": "tsc --declaration src/encryption.ts"
+    "build": "tsc"
   },
   "keywords": [
     "cryptography",
