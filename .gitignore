@@ -98,3 +98,4 @@ Thumbs.db
 
 package-lock.json
 *.orig
+built/
