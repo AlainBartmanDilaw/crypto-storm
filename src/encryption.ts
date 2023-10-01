@@ -54,7 +54,8 @@ export function doDecrypt(text: string): string {
     }
 
     const textParts: string[] = text.split(':');
-    const iv: Buffer = Buffer.from(textParts.shift(), encoding);
+    const fromShift: string = textParts.shift() ?? "";
+    const iv: Buffer = Buffer.from(fromShift, encoding);
     const encryptedText: Buffer = Buffer.from(textParts.join(':'), encoding);
     const decipher: crypto.Decipher = crypto.createDecipheriv(algorithm, key, iv);
     const decrypted: Buffer = Buffer.concat([ decipher.update(encryptedText), decipher.final() ]);

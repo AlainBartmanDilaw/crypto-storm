@@ -2,13 +2,14 @@
   "name": "crypto-storm",
   "version": "1.0.3",
   "description": "JavaScript library of crypto specific functions.",
-  "main": "encryption.ts",
+  "main": "dist/encryption.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node encrypt.js ",
     "extract": "cross-env ENCRYPTION_KEY='+GKTkd5yY/xvaGR]wS[JC4@1+Epd)6@v' ts-node src/encrypt 4X38sKgro64-+qGu",
     "random": "node tests/random-test.js",
-    "build": "tsc"
+    "build-wp": "webpack --mode production",
+    "build": "tsc --module commonjs"
   },
   "keywords": [
     "cryptography",
