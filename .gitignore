@@ -98,4 +98,4 @@ Thumbs.db
 
 package-lock.json
 *.orig
-pnpm-lock.yaml
+built/
