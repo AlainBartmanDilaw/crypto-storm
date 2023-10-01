@@ -32,8 +32,7 @@ function getEncryptionKey(): Buffer {
 // Set first environment variable ENCRYPTION_KEY
 const key: Buffer = getEncryptionKey();
 
-
-export function doEncrypt(text: string): string {
+export function doEncrypt(text: string | undefined): string {
 
     if (text === undefined || text === "") {
         throw NO_UNDEFINED_TEXT;
