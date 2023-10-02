@@ -18,7 +18,6 @@ const hashData = {
 }
 
 function getEncryptionKey(): Buffer {
-    console.log('getEncryptionKey', process.env.ENCRYPTION_KEY)
     if (process.env.ENCRYPTION_KEY === undefined) {
         throw UNDEFINED_MESSAGE + " " + SETFIRST_MESSAGE;
     }
