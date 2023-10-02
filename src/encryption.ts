@@ -3,7 +3,7 @@
 import * as crypto from 'crypto';
 
 const IV_LENGTH: number = 16; // For AES, this is always 16
-const SETFIRST_MESSAGE: string = "Set first environment variable ENCRYPTION_KEY."
+const SET_FIRST_MESSAGE: string = "Set first environment variable ENCRYPTION_KEY."
 const ERROR_MESSAGE: string = "The encryption key must be defined with 32 characters length string.";
 const UNDEFINED_MESSAGE: string = "The variable ENCRYPTION_KEY must be defined before any decrypt action.";
 const NO_UNDEFINED_TEXT: string = "The text you want to crypt or decrypt cannot be undefined or empty.";
@@ -19,10 +19,10 @@ const hashData = {
 
 function getEncryptionKey(): Buffer {
     if (process.env.ENCRYPTION_KEY === undefined) {
-        throw UNDEFINED_MESSAGE + " " + SETFIRST_MESSAGE;
+        throw UNDEFINED_MESSAGE + " " + SET_FIRST_MESSAGE;
     }
     if (process.env.ENCRYPTION_KEY.length !== 32) {
-        throw ERROR_MESSAGE + " " + SETFIRST_MESSAGE;
+        throw ERROR_MESSAGE + " " + SET_FIRST_MESSAGE;
     }
     return crypto.createHash(hashData.algo).update(hashData.data).digest();
 }
