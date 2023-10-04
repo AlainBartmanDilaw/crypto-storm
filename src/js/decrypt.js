@@ -1,5 +1,5 @@
 try {
-    const _encryption = require('./encryption');
+    const _encryption = require('../encryption');
     const path = require("path");
 
     const currentPath = process.cwd();
