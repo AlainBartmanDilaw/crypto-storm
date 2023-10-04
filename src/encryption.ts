@@ -38,7 +38,7 @@ export function doEncrypt(text: string | undefined): string {
         throw NO_UNDEFINED_TEXT;
     }
 
-    let iv: Buffer = crypto.randomBytes(IV_LENGTH).slice(0, 16);
+    let iv: Buffer = crypto.randomBytes(IV_LENGTH);
     let cipher: crypto.Cipher = crypto.createCipheriv(algorithm, key, iv);
     let encrypted: Buffer = cipher.update(text);
 
