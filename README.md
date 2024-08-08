@@ -4,13 +4,15 @@ Allows encryption and decryption, knowing the key.
 This must imperatively be valued in the environment variable ENCRYPTION_KEY
 
 # Example syntax
+## Javascript
+> ENCRYPTION_KEY='hCGTd)qSb@ZfAtvPfy^w3$#gN/KCsN.w' node encrypt.js "Something"
 
-> ENCRYPTION_KEY='hCGTd)qSb@ZfAtvPfy^w3$#gN/KCsN.w' node encrypt.ts "Something"
+## Typescript
+> ENCRYPTION_KEY='hCGTd)qSb@ZfAtvPfy^w3$#gN/KCsN.w' ts-node encrypt.ts "Something"
 
+## Result :
 should return something like this :
 
-> ENCRYPTION_KEY='hCGTd)qSb@ZfAtvPfy^w3$#gN/KCsN.w' node encrypt.ts "Something"
->
 > Something has been encrypted to 14398958d684ad2d6840b7a543e29df0:ecfcf677d6cc943bb850493ef60d99ec
 
 # Notices
